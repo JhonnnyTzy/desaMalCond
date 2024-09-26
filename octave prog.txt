@@ -1,0 +1,47 @@
+% Definimos la matriz A con ligeros cambios en los coeficientes
+A1 = [1.0001, 1.0000, 0.9999;
+      1.0000, 1.0000, 1.0000;
+      0.9999, 1.0000, 1.0001];
+
+% Definimos el vector b
+b = [3; 3; 3];
+
+% Solucionamos el sistema A1 * x = b
+x1 = A1 \ b;
+
+% Ahora creamos una matriz A2 con pequeños cambios aún más drásticos
+A2 = [1.0000, 1.0000, 0.9999;
+      1.0000, 1.0000, 1.0000;
+      0.9999, 1.0000, 1.0002];
+
+% Solucionamos el nuevo sistema A2 * x = b
+x2 = A2 \ b;
+
+% Mostramos las soluciones de ambos sistemas
+disp("Solución para A1 * x = b:")
+disp(x1)
+disp("Solución para A2 * x = b:")
+disp(x2)
+
+% Calculamos el determinante de las matrices
+det_A1 = det(A1);
+det_A2 = det(A2);
+disp("Determinante de A1:")
+disp(det_A1)
+disp("Determinante de A2:")
+disp(det_A2)
+
+% Verificamos la matriz identidad multiplicando A1 y su inversa
+I1 = A1 * inv(A1);
+disp("Matriz identidad para A1 * inv(A1):")
+disp(I1)
+
+% Condición del sistema para observar cómo pequeños cambios afectan la solución
+cond_A1 = cond(A1);
+cond_A2 = cond(A2);
+disp("Número de condición de A1:")
+disp(cond_A1)
+disp("Número de condición de A2:")
+disp(cond_A2)
+
+% Conclusión: Pequeños cambios cambian drásticamente la solución
